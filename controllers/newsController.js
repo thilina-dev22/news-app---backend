@@ -21,6 +21,7 @@ const getNewsById = async (req, res) => {
 
         res.status(200).json(news);
     } catch (error) {
+        console.log(`Error Fetching News: ${error}`.red);
         res.status(500).json({ message: `Server error: ${error.message}` });
     }
 
@@ -70,6 +71,7 @@ const updateNews = async (req, res) => {
     const updatednews = await news.save();
     res.json(updatednews);
   } catch (error) {
+    console.log(`Error Updating News: ${error}`.red);
     res.status(500).json({ message: `Server error: ${error.message}` });
   }
 };
@@ -89,6 +91,7 @@ const deleteNews = async (req, res) => {
       .status(200)
       .json({ message: `The news with id: ${id} is deleted successfully!` });
   } catch (error) {
+    console.log(`Error Deleting News: ${error}`.red);
     res.status(500).json({ message: `Server error: ${error.message}` });
   }
 };
